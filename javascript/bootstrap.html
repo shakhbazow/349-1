@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+        <script>
+
+            console.log("Hello console")
+            var age = 70;
+            var count =0;
+            while (count == 10)
+                {
+                    document.write("Count is: ", count)
+                    count++;
+                }
+            
+            if (age>10)
+            {
+                document.write("can drive legally")
+            }
+            function sayHello(){
+                // if else
+                
+                document.write("Hello")
+                alert("Hey Class")
+            }
+
+            function rectarea(l,b)
+            {
+                var area;
+                area = l*b;
+                return area
+            }
+
+            function nested(){
+                var res;
+                res = rectarea(4,5);
+                document.write(res)
+            }
+
+            /* 
+            1. Web frontend/ web backend
+            2. bootstrap
+            3. 
+
+            */
+           
+        </script>
+
+   
+        <input type ="button" onclick="nested()" value ="Find Area">
+        <input type="button" onclick="sayHello()" value="Click Me">
+    </head>
+</html>
