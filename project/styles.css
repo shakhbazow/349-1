@@ -1,0 +1,55 @@
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    background-color: #f9f9f9;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 20px;
+    text-align: center;
+}
+
+h1 {
+    color: #333;
+    font-size: 36px;
+    font-weight: bold;
+    margin-bottom: 30px;
+}
+
+.quiz-list {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.quiz-list h2 {
+    margin-bottom: 20px;
+    color: #555;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.quiz-list ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.quiz-list li {
+    margin-bottom: 15px;
+}
+
+.quiz-list a {
+    text-decoration: none;
+    color: #111115; /* Apple blue */
+    font-weight: bold;
+
+}
+
+.quiz-list a:hover {
+    color: #005aa7; /* Darker shade of Apple blue */
+}
