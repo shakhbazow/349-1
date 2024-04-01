@@ -89,54 +89,53 @@
             const questionName = button.name;
             const selectedValue = button.value;
 
-            // Unselect all options in the same question
             const options = document.querySelectorAll('.button[name="' + questionName + '"]');
             options.forEach(option => {
                 option.classList.remove('selected');
             });
 
-            // Mark the selected option
+            
             button.classList.add('selected');
         }
 
         document.getElementById('quiz-form').addEventListener('submit', function(event) {
-            event.preventDefault(); // Prevent the default form submission
+            event.preventDefault(); // prevent form submission
 
-            // Define answers for each question
+            // ans
             const answers = {
-                'q1': 'c', // BMW
-                'q2': 'b', // Volvo
-                'q3': 'b', // Toyota
-                'q4': 'c', // Jaguar
-                'q5': 'b', // Peugeot
-                'q6': 'c', // Hyundai
-                'q7': 'a'  // Ferrari
-                // Add more answers here if you add more questions
+                'q1': 'c', 
+                'q2': 'b', 
+                'q3': 'b', 
+                'q4': 'c', 
+                'q5': 'b', 
+                'q6': 'c', 
+                'q7': 'a'  
+                
             };
 
-            // Initialize variables for tracking correct and total answers
+          
             let correctAnswers = 0;
             let totalQuestions = 0;
 
-            // Iterate through each question
+            // iterate through each question
             Object.keys(answers).forEach(function(question) {
                 const selectedOption = document.querySelector('.button[name="' + question + '"].selected');
 
-                // Check if an option is selected for each question
+            
                 if (selectedOption) {
                     totalQuestions++;
 
-                    // Check if the selected option is correct
+                    // Check if vorrect
                     if (selectedOption.value === answers[question]) {
                         correctAnswers++;
                     }
                 }
             });
 
-            // Calculate the score
+          
             const score = correctAnswers / totalQuestions;
 
-            // Display the results as true/false
+            // Display results
             const resultContainer = document.getElementById('result-container');
             resultContainer.innerHTML = '<p style="font-weight: bold;">Score: ' + score.toFixed(2) + '</p>' +
                                         '<p style="font-weight: bold;">Correct Answers: ' + correctAnswers + '</p>' +

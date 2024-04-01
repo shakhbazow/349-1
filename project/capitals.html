@@ -87,41 +87,41 @@
 
         document.addEventListener('DOMContentLoaded', function() {
             document.getElementById('quiz-form').addEventListener('submit', function(event) {
-                event.preventDefault(); // Prevent the default form submission
+                event.preventDefault(); // prevent the default form submission
 
-                // Define answers for each question
+                // answers
                 const answers = {
-                    'q1': 'c', // Paris
-                    'q2': 'a', // New Delhi
-                    'q3': 'c', // Washington D.C.
-                    'q4': 'a', // Baku
-                    'q5': 'a'  // Tokyo
-                    // Add more answers here if you add more questions
+                    'q1': 'c',
+                    'q2': 'a', 
+                    'q3': 'c', 
+                    'q4': 'a', 
+                    'q5': 'a'  
+                
                 };
 
-                // Initialize variables for tracking correct and total answers
+                
                 let correctAnswers = 0;
                 let totalQuestions = 0;
 
-                // Iterate through each question
+               
                 Object.keys(answers).forEach(function(question) {
                     const selectedOption = document.querySelector('button[name="' + question + '"].selected');
 
-                    // Check if an option is selected for each question
+                    
                     if (selectedOption) {
                         totalQuestions++;
 
-                        // Check if the selected option is correct
+                        // check if  correct
                         if (selectedOption.value === answers[question]) {
                             correctAnswers++;
                         }
                     }
                 });
 
-                // Calculate the score
+                // calculate the score
                 const score = correctAnswers / totalQuestions;
 
-                // Display the results as true/false
+              
                 const resultContainer = document.getElementById('result-container');
                 resultContainer.innerHTML = '<p style="font-weight: bold;">Score: ' + score.toFixed(2) + '</p>' +
                                             '<p style="font-weight: bold;">Correct Answers: ' + correctAnswers + '</p>' +
@@ -130,16 +130,10 @@
             });
         });
 
-        function toggleColor(button) {
-            // Remove 'clicked' class from all buttons
-            const buttons = document.querySelectorAll('.button');
-            buttons.forEach(btn => {
-                btn.classList.remove('clicked');
-            });
+     
 
-            // Add 'clicked' class to the clicked button
             button.classList.add('clicked');
-        }
+        
     </script>
 </body>
 </html>
