@@ -11,25 +11,135 @@
         <h1>Capitals of the World Quiz</h1>
         <form id="quiz-form">
             <div class="question">
-                <p>1. What is the capital of France?</p>
+                <p> <img src="france.png" alt="France Flag" style="height: 20px; vertical-align: middle;"> 
+                    1. What is the capital of France?</p>
+                
                 <div class="options">
-                    <label>
-                        <input type="radio" name="q1" value="a"> a) London
-                    </label>
-                    <label>
-                        <input type="radio" name="q1" value="b"> b) Berlin
-                    </label>
-                    <label>
-                        <input type="radio" name="q1" value="c"> c) Paris
-                    </label>
-                    <label>
-                        <input type="radio" name="q1" value="d"> d) Rome
-                    </label>
+                    <button type="button" name="q1" value="a" onclick="selectAnswer(this)" onmouseover="showTooltip(this)">a) London</button>
+                    <button type="button" name="q1" value="b" onclick="selectAnswer(this)" onmouseover="showTooltip(this)">b) Berlin</button>
+                    <button type="button" name="q1" value="c" onclick="selectAnswer(this)" onmouseover="showTooltip(this)">c) Paris</button>
+                    <button type="button" name="q1" value="d" onclick="selectAnswer(this)" onmouseover="showTooltip(this)">d) Rome</button>
                 </div>
             </div>
-            <!-- Add more questions here -->
+
+            <div class="question">
+                <p> <img src="india.png" alt="india Flag" style="height: 20px; vertical-align: middle;"> 
+                    2. What is the capital of India?</p>
+                <div class="options">
+                    <button type="button" name="q2" value="a" onclick="selectAnswer(this)" onmouseover="showTooltip(this)">a) New Delhi</button>
+                    <button type="button" name="q2" value="b" onclick="selectAnswer(this)" onmouseover="showTooltip(this)">b) Mumbai</button>
+                    <button type="button" name="q2" value="c" onclick="selectAnswer(this)" onmouseover="showTooltip(this)">c) Kolkata</button>
+                    <button type="button" name="q2" value="d" onclick="selectAnswer(this)" onmouseover="showTooltip(this)">d) Bangalore</button>
+                </div>
+            </div>
+
+            <div class="question">
+                <p><img src="usa.png" alt="USA Flag" style="height: 20px; vertical-align: middle;"> 
+                    3. What is the capital of the United States?</p>
+                <div class="options">
+                    <button type="button" name="q3" value="a" onclick="selectAnswer(this)">a) New York City</button>
+                    <button type="button" name="q3" value="b" onclick="selectAnswer(this)">b) Los Angeles</button>
+                    <button type="button" name="q3" value="c" onclick="selectAnswer(this)">c) Washington D.C.</button>
+                    <button type="button" name="q3" value="d" onclick="selectAnswer(this)">d) Chicago</button>
+                </div>
+            </div>
+
+            <div class="question">
+                <p><img src="azerbaijan.png" alt="Azerbaijan Flag" style="height: 20px; vertical-align: middle;"> 
+                    4. What is the capital of Azerbaijan?</p>
+                <div class="options">
+                    <button type="button" name="q4" value="a" onclick="selectAnswer(this)">a) Baku</button>
+                    <button type="button" name="q4" value="b" onclick="selectAnswer(this)">b) Tbilisi</button>
+                    <button type="button" name="q4" value="c" onclick="selectAnswer(this)">c) Ankara</button>
+                    <button type="button" name="q4" value="d" onclick="selectAnswer(this)">d) Yerevan</button>
+                </div>
+            </div>
+
+            <div class="question">
+                <p> <img src="japan.png" alt="Japan Flag" style="height: 20px; vertical-align: middle;"> 
+                    5. What is the capital of Japan?</p>
+                <div class="options">
+                    <button type="button" name="q5" value="a" onclick="selectAnswer(this)">a) Tokyo</button>
+                    <button type="button" name="q5" value="b" onclick="selectAnswer(this)">b) Kyoto</button>
+                    <button type="button" name="q5" value="c" onclick="selectAnswer(this)">c) Osaka</button>
+                    <button type="button" name="q5" value="d" onclick="selectAnswer(this)">d) Hiroshima</button>
+                </div>
+            </div>
+
             <button type="submit">Submit</button>
         </form>
+        <div id="result-container"></div>
     </div>
+    <script>
+        function selectAnswer(button) {
+            const questionName = button.name;
+            const selectedValue = button.value;
+
+            // Unselect all options in the same question
+            const options = document.getElementsByName(questionName);
+            options.forEach(option => {
+                option.classList.remove('selected');
+            });
+
+            // Mark the selected option
+            button.classList.add('selected');
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('quiz-form').addEventListener('submit', function(event) {
+                event.preventDefault(); // Prevent the default form submission
+
+                // Define answers for each question
+                const answers = {
+                    'q1': 'c', // Paris
+                    'q2': 'a', // New Delhi
+                    'q3': 'c', // Washington D.C.
+                    'q4': 'a', // Baku
+                    'q5': 'a'  // Tokyo
+                    // Add more answers here if you add more questions
+                };
+
+                // Initialize variables for tracking correct and total answers
+                let correctAnswers = 0;
+                let totalQuestions = 0;
+
+                // Iterate through each question
+                Object.keys(answers).forEach(function(question) {
+                    const selectedOption = document.querySelector('button[name="' + question + '"].selected');
+
+                    // Check if an option is selected for each question
+                    if (selectedOption) {
+                        totalQuestions++;
+
+                        // Check if the selected option is correct
+                        if (selectedOption.value === answers[question]) {
+                            correctAnswers++;
+                        }
+                    }
+                });
+
+                // Calculate the score
+                const score = correctAnswers / totalQuestions;
+
+                // Display the results as true/false
+                const resultContainer = document.getElementById('result-container');
+                resultContainer.innerHTML = '<p style="font-weight: bold;">Score: ' + score.toFixed(2) + '</p>' +
+                                            '<p style="font-weight: bold;">Correct Answers: ' + correctAnswers + '</p>' +
+                                            '<p style="font-weight: bold;">Total Questions: ' + totalQuestions + '</p>' +
+                                            '<p style="font-weight: bold;">Result: ' + (score === 1 ? 'You got all right!' : 'You made mistakes') + '</p>';
+            });
+        });
+
+        function toggleColor(button) {
+            // Remove 'clicked' class from all buttons
+            const buttons = document.querySelectorAll('.button');
+            buttons.forEach(btn => {
+                btn.classList.remove('clicked');
+            });
+
+            // Add 'clicked' class to the clicked button
+            button.classList.add('clicked');
+        }
+    </script>
 </body>
 </html>

@@ -57,10 +57,29 @@ button[type="submit"]:hover {
     background-color: #333;
 }
 
+/* styles.css */
+
 #result-container {
-    margin-top: 20px; /* Added margin-top for spacing */
-    background-color: #fff;
+    background-color: #f9f9f9; /* Light background color */
     border: 1px solid #ccc;
     border-radius: 5px;
     padding: 20px;
+    margin-top: 20px;
+    font-family: "Arial", sans-serif; /* Apple commonly uses Helvetica Neue, but Arial is a close alternative */
+    color: #111115; /* Apple's dark text color */
+    text-align: center; /* Center-align the text */
+    font-weight: bold;
 }
+
+#result-container p {
+    margin-bottom: 10px;
+}
+
+#result-container p:last-child {
+    margin-bottom: 0;
+}
+.button:hover {
+    background-color: #1f2e3e;
+}
+
+
